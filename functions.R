@@ -32,9 +32,8 @@ colorMatchR <- function(ancestry,colors=c("gold","forestgreen","magenta3","orang
         palette[f] <- colors[i]
       }
     }
-    palette[which(palette == "NA")] <- colors[which(colors%in%palette == FALSE)]
-    colors <- palette
-    return(colors)
+    palette[palette == "NA"] <- colors[colors%in%palette == FALSE]
+    return(palette)
 }
 
 

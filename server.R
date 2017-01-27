@@ -38,7 +38,7 @@ shinyServer(function(input,output,session){
     return(tmp[1:(ncol(tmp)-1)])
   })
   
-  #color matching
+  #color matching BUG: right now colorMatchR requires user-defined pops to be numeric. 
   colors <- reactive({
     pal <- input$palettes
     if(is.null(pal)){

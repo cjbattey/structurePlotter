@@ -19,7 +19,9 @@ shinyUI(fluidPage(
       colourInput("pop5.col",label="pop 5",value="cornflowerblue"),
       colourInput("pop6.col",label="pop 6",value="orange"),
       colourInput("pop7.col",label="pop 7",value="sienna"),
-      colourInput("pop8.col",label="pop 8",value="dodgerblue4")
+      colourInput("pop8.col",label="pop 8",value="dodgerblue4"),
+      helpText("StructurePlotter was written by CJ Battey. Find the full code, submit bug reports, 
+               or fork away and improve the site at https://github.com/cjbattey/structurePlotter",style="font-size:10px;")
     ),
     mainPanel(style="position:fixed;margin-left:32vw;",
       plotOutput("plot"),
