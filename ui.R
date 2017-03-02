@@ -4,7 +4,8 @@ shinyUI(fluidPage(
   sidebarLayout(
     sidebarPanel(
       fileInput("file1","upload structure output"),
-      #fileInput("matrix","upload ancestry matrix"),
+      fileInput("matrix","upload ancestry matrix (e.g. faststructure q matrix)"),
+      fileInput("sampleID","upload sample ID's (if not included in ancestry matrix)"),
       numericInput("cex.names","Sample ID Font Scaling (default=0.75)",value=0.75),
       checkboxInput("border","Border Clusters?",value=T),
       checkboxInput("sortByPop","Sort by population?",value=F),

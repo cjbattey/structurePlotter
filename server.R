@@ -6,6 +6,7 @@ shinyServer(function(input,output,session){
   data <- reactive({
     inFile <- input$file1
     mat <- input$matrix
+    sampleID <- input$sampleID
     
     if (is.null(inFile) & is.null(mat)){
       parseStructureOutput("./testRun1.strOut_f")
@@ -13,7 +14,12 @@ shinyServer(function(input,output,session){
       parseStructureOutput(inFile$datapath)
     } else if(is.null(inFile)==T & is.null(mat)==F){
       mat <- fread(mat$datapath) %>% data.frame()
+      colnames(mat) <- c(1:ncol(mat))
       mat$pop <- apply(mat,1,function(e) names(e[e==max(e)]))
+      if(!is.null(sampleID)){
+        ID <- readLines(sampleID$datapath) %>% unlist()
+        rownames(mat) <- ID
+      }
       return(mat)
     }
   })
