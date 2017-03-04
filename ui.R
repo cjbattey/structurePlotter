@@ -3,9 +3,9 @@ shinyUI(fluidPage(
   titlePanel("structurePlotter v0.1"),
   sidebarLayout(
     sidebarPanel(
-      fileInput("file1","upload structure output"),
-      fileInput("matrix","upload ancestry matrix (e.g. faststructure q matrix)"),
-      fileInput("sampleID","upload sample ID's (if not included in ancestry matrix)"),
+      fileInput("file1","upload data"),
+      fileInput("sampleID","upload sample ID's"),
+      radioButtons("inputFormat",label="Input Format",choices=c("structure","faststructure")),
       numericInput("cex.names","Sample ID Font Scaling (default=0.75)",value=0.75),
       checkboxInput("border","Border Clusters?",value=T),
       checkboxInput("sortByPop","Sort by population?",value=F),
@@ -26,7 +26,8 @@ shinyUI(fluidPage(
     ),
     mainPanel(style="position:fixed;margin-left:32vw;",
       plotOutput("plot"),
-      downloadButton("download","Download Plot")
+      div(style="width:1px"),
+      downloadButton("download","Download")
       #tableOutput("table")
     )
   )))
